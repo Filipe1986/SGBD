@@ -23,7 +23,7 @@
 	<c:import url="../head.jsp" />
 	<div class="container">
 
-		<h1>Lista de Meididas</h1>
+		<h1>Lista de Medidas</h1>
 
 		<table class="table table-bordered table-striped table-hover ">
 			<thead>

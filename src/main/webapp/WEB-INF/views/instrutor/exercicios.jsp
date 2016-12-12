@@ -26,94 +26,6 @@
         <c:import url="../head.jsp" />
 
 
-
-        <table class="table table-bordered table-striped table-hover ">
-            <thead>
-                <tr>
-                    <th><h4>Instrutor:
-                            ${ficha.instrutor.nome}${instrutor.nome}</h4></th>
-
-                    <th><h4>Data incio: ${ficha.dataInicial}</h4></th>
-
-                    <th><h4>Data Final: ${ficha.dataFinal}</h4></th>
-
-                    <th><h4>Tempo disponivel: ${ficha.tempoDisponivel}</h4></th>
-
-
-                </tr>
-            </thead>
-        </table>
-
-        <div class="container">
-            <form:form id="contact"
-                       action="${s:mvcUrl('IC#adicionarExercicioFicha').arg(0 , usuario.id).arg(1 , ficha.fichaId).build()}"
-                       method="post">
-
-
-                <h3>Adicionar Exercício</h3>
-
-
-
-                <fieldset>
-                    <div>
-                        <label>Exercicio Aparelho</label>
-                        <select name='exercicios'>
-                            <option value="${selected}" selected>${selected}</option>
-                            <c:forEach items="${exercicios}" var="exercicio">
-                                <option value="${exercicio}">${exercicio.exercicio.nomeExercicio}${exercicio.aparelho.nomeAparelho}</option>
-                            </c:forEach>
-
-                        </select> <br>
-                    </div>
-                </fieldset>
-
-                <fieldset>
-                    <div>
-                        <label>Série</label>
-                        <select name='seriesPertencentes'>
-                            <option value="${selected}" selected>${selected}</option>
-                            <c:forEach items="${seriesPertencentes}" var="serie">
-                                <option value="${seriePertencente}">${serie}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                </fieldset>
-
-                <fieldset>
-                    <div>
-                        <label>Repetições</label>
-                        <td><input name="repeticoes" type="number" step="1" min="1"
-                                   value=""></td>
-
-                    </div>
-                </fieldset>
-
-                <fieldset>
-                    <div>
-                        <label>Carga</label>
-                        <td><input name="carga" type="number" step="0.5" min="1"
-                                   value=""></td>
-
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div>
-
-                        <label>Tempo descanso</label> <input name="tempoDeDescanso"
-                                                             type="number" step="1" value="1">
-                    </div>
-                </fieldset>
-
-
-                <input name="text" type="hidden" value="${ficha.fichaId}">
-
-
-                <button name="submit" type="submit" id="contact-submit"
-                        data-submit="...Sending">Adicionar</button>
-            </form:form>
-        </div>
-<!-- Parte da ficha importada do ficha.jsp-->
-
 	<div class="container">
 
 		<form:form id="contact"
@@ -305,42 +217,82 @@
 					</div>
 				</div>
 </c:if>
-				<div class="row">
-					<div class="col-md-6">
-						<p>
-							<strong>DICAS PARA TREINO</strong>
-						</p>
-						<ul class="list-group">
-							<li class="list-group-item">Certifique-se que o assento e os
-								suportes estão corretamente ajustados</li>
-							<li class="list-group-item">Respire em cada repetição</li>
-							<li class="list-group-item">A cada três treinos, tente
-								aumentar os pesos</li>
-						</ul>
-					</div>
 
-					<div class="col-md-6">
-						<p>
-							<strong>DICAS PARA CARDIO</strong>
-						</p>
-						<ul class="list-group">
-							<li class="list-group-item">Aumente a intensidade
-								gradativamente sem se sentir ofegante</li>
-							<li class="list-group-item">Trabalho de cardio - no mínimo
-								20 minutos</li>
-							<li class="list-group-item">Beba água antes, durante e
-								depois do treino</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- End of class="panel-body"> -->
 	</div>
 	<!-- End of class="panel panel-default" -->
-	</form:form>
+
 	</div>
 <!-- fim da apresentação da ficha importada do ficha -->
+	</form:form>
 
+        <div class="container">
+            <form:form id="contact"
+                       action="${s:mvcUrl('IC#adicionarExercicioFicha').arg(0 , usuario.id).arg(1 , ficha.fichaId).build()}"
+                       method="post">
+
+
+                <h3>Adicionar Exercício</h3>
+
+
+
+                <fieldset>
+                    <div>
+                        <label>Exercicio Aparelho</label>
+                        <select name='exercicios'>
+                            <option value="${selected}" selected>${selected}</option>
+                            <c:forEach items="${exercicios}" var="exercicio">
+                                <option value="${exercicio}">${exercicio.exercicio.nomeExercicio}${exercicio.aparelho.nomeAparelho}</option>
+                            </c:forEach>
+
+                        </select> <br>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div>
+                        <label>Série</label>
+                        <select name='seriesPertencentes'>
+                            <option value="${selected}" selected>${selected}</option>
+                            <c:forEach items="${seriesPertencentes}" var="serie">
+                                <option value="${seriePertencente}">${serie}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div>
+                        <label>Repetições</label>
+                        <td><input name="repeticoes" type="number" step="1" min="1"
+                                   value=""></td>
+
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div>
+                        <label>Carga</label>
+                        <td><input name="carga" type="number" step="0.5" min="1"
+                                   value=""></td>
+
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div>
+
+                        <label>Tempo descanso</label> <input name="tempoDeDescanso"
+                                                             type="number" step="1" value="1">
+                    </div>
+                </fieldset>
+
+
+                <input name="text" type="hidden" value="${ficha.fichaId}">
+
+
+                <button name="submit" type="submit" id="contact-submit"
+                        data-submit="...Sending">Adicionar</button>
+            </form:form>
+        </div>
 
 <c:import url="../footer.jsp" />
 

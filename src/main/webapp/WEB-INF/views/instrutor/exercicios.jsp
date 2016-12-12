@@ -52,15 +52,6 @@
 
                 <h3>Adicionar Exercício</h3>
 
-                <%-- 		<fieldset>
-                        <div class="form-group">
-                                <label>Nome</label> <input type="text" class="form-control"
-                                        name="nomeExercicio"
-                                        placeholder="Infome o Nome do Exercício no aparelho"> <span
-                                        class='msg-erro msg-nome'></span>
-                        </div>
-                </fieldset> --%>
-
 
 
                 <fieldset>
@@ -105,17 +96,6 @@
 
                     </div>
                 </fieldset>
-
-                <%-- 		<fieldset>
-                        <div>
-                                <select name='aparelho.aparelhoId'>
-                                        <option value="${selected}" selected>${selected}</option>
-                                        <c:forEach items="${aparelhos}" var="aparelho">
-                                                <option value="${aparelho.aparelhoId}">${aparelho.nomeAparelho}</option>
-                                        </c:forEach>
-                                </select> <br>
-                        </div>
-                </fieldset> --%>
                 <fieldset>
                     <div>
 
@@ -132,36 +112,234 @@
                         data-submit="...Sending">Adicionar</button>
             </form:form>
         </div>
+<!-- Parte da ficha importada do ficha.jsp-->
 
-        <c:forEach items="${seriesPertencentes}" var="serie">
-            <table class="table table-bordered table-striped table-hover ">
-                <thead>
-                    <tr>
+	<div class="container">
 
-                        <th class="info">Série ${serie}</th>
-                        <th>descando:</th>
-                <tbody>
+		<form:form id="contact"
+			action="${s:mvcUrl('IC#detalhesFicha').arg(0 , ficha.fichaId).build()}"
+			method="POST">
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					<h4>
+						<span class="glyphicon glyphicon-user"></span> FICHA DE TREINO
+					</h4>
+				</div>
+				<div class="panel-body">
 
-                    <tr>
+					<div class="row">
+						<div class="col-md-4">
+							<p>
+								<strong>Nome do aluno</strong>: ${ficha.usuario.nome}
+							</p>
+							<p>
+								<strong>Nome do Instrutor</strong>: ${ficha.instrutor.nome}
+							</p>
+							<p>
+								<strong>Objetivo</strong>: ${ficha.objetivo}
+							</p>
+						</div>
 
-                        <th>Nome Exercicio</th>
-                        <th>Aparelho</th>
+						<div class="col-md-4">
+							<p>
+								<strong>Frequência</strong>: ${ficha.frequenciaSemanal} vezes
+								por semana
+							</p>
+							<p>
+								<strong>Duração do treino</strong>: ${ficha.tempoDisponivel}
+							</p>
+							<p>
+								<strong>Divisão de treino</strong>: ${ficha.serie.ordinal()}
+							</p>
+						</div>
 
-                        <th>Repetições</th>
-                        <th>Carga</th>
-                            <%-- 					<c:forEach items="${ficha.exerciciosAparelhos}" var="exercicio1">
-                                    <p>${exercicio1}</p>
-                                    <p>qualquer coisa</p>
+						<div class="col-md-4">
+							<p>
+								<strong>Estado</strong>: ${ficha.fichaAtual}
+							</p>
+							<p>
+								<strong>Data Inicial</strong>: ${ficha.dataInicial}
+							</p>
+							<p>
+								<strong>Data Final</strong>: ${ficha.dataFinal}
+							</p>
+						</div>
+					</div>
 
-                                        </c:forEach> --%>
+					<div class="row">
+						<div class="col-md-6">
+							<!-- Divisão A -->
+							<table class="table table-bordered table-striped">
+								<caption class="text-center">
+									<strong>TREINO A</strong>
+								</caption>
+								<tr>
+									
+									<th class="text-center">Exercício</th>
+									<th class="text-center">Aparelho</th>
+									<th class="text-center">Nº</th>
+								</tr>
+								<c:forEach items="${ficha.exercicios}" var="exercicio">
+									<c:if test="${exercicio.seriePertencente == 'A'}">
+										<tr>
+											
+											<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
+											<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>
+											<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
+										</tr>
+									</c:if>
+								</c:forEach>
+							</table>
 
-                    </tr>
-                </tbody>
-            </tr>
-        </thead>
-    </table>
+						</div>
+<c:if test="${ficha.serie.ordinal() > 0  }">
 
-</c:forEach>
+
+						<div class="col-md-6">
+							<!-- Divisão B -->
+							<table class="table table-bordered table-striped">
+								<caption class="text-center">
+								
+									<strong>TREINO B</strong>
+								</caption>
+								<tr>
+									
+									<th class="text-center">Exercício</th>
+									<th class="text-center">Aparelho</th>
+									<th class="text-center">Nº</th>
+								</tr>
+								<c:forEach items="${ficha.exercicios}" var="exercicio">
+									<c:if test="${exercicio.seriePertencente == 'B'}">
+										<tr>
+											
+											<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
+											<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>
+											<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
+										</tr>
+									</c:if>
+								</c:forEach>
+							</table>
+						</div>
+					</div>
+</c:if>
+<c:if test="${ficha.serie.ordinal() > 1   }">
+					<div class="col-md-6">
+						<!-- Divisão C -->
+						<table class="table table-bordered table-striped">
+							<caption class="text-center">
+								<strong>TREINO C</strong>
+							</caption>
+							<tr>
+								
+								<th class="text-center">Exercício</th>
+								<th class="text-center">Aparelho</th>
+								<th class="text-center">Nº</th>
+							</tr>
+							<c:forEach items="${ficha.exercicios}" var="exercicio">
+								<c:if test="${exercicio.seriePertencente == 'C'}">
+									<tr>
+										
+										<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
+										<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>
+										<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
+									</tr>
+								</c:if>
+							</c:forEach>
+						</table>
+					</div>
+				</div>
+				</c:if>
+<c:if test="${ficha.serie.ordinal() > 2  }">
+					<div class="col-md-6">
+						<!-- Divisão D -->
+						<table class="table table-bordered table-striped">
+							<caption class="text-center">
+								<strong>TREINO D</strong>
+							</caption>
+							<tr>
+								
+								<th class="text-center">Exercício</th>
+								<th class="text-center">Aparelho</th>
+								<th class="text-center">Nº</th>
+							</tr>
+							<c:forEach items="${ficha.exercicios}" var="exercicio">
+								<c:if test="${exercicio.seriePertencente == 'D'}">
+									<tr>
+										
+										<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
+										<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>
+										<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
+									</tr>
+								</c:if>
+							</c:forEach>
+						</table>
+					</div>
+				</div>
+</c:if>
+<c:if test="${ficha.serie.ordinal()> 3  }">
+				</div>
+					<div class="col-md-6">
+						<!-- Divisão E -->
+						<table class="table table-bordered table-striped">
+							<caption class="text-center">
+								<strong>TREINO E</strong>
+							</caption>
+							<tr>
+								
+								<th class="text-center">Exercício</th>
+								<th class="text-center">Aparelho</th>
+								<th class="text-center">Nº</th>
+							</tr>
+							<c:forEach items="${ficha.exercicios}" var="exercicio">
+								<c:if test="${exercicio.seriePertencente == 'E'}">
+									<tr>
+										
+										<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
+										<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>
+										<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
+									</tr>
+								</c:if>
+							</c:forEach>
+						</table>
+					</div>
+				</div>
+</c:if>
+				<div class="row">
+					<div class="col-md-6">
+						<p>
+							<strong>DICAS PARA TREINO</strong>
+						</p>
+						<ul class="list-group">
+							<li class="list-group-item">Certifique-se que o assento e os
+								suportes estão corretamente ajustados</li>
+							<li class="list-group-item">Respire em cada repetição</li>
+							<li class="list-group-item">A cada três treinos, tente
+								aumentar os pesos</li>
+						</ul>
+					</div>
+
+					<div class="col-md-6">
+						<p>
+							<strong>DICAS PARA CARDIO</strong>
+						</p>
+						<ul class="list-group">
+							<li class="list-group-item">Aumente a intensidade
+								gradativamente sem se sentir ofegante</li>
+							<li class="list-group-item">Trabalho de cardio - no mínimo
+								20 minutos</li>
+							<li class="list-group-item">Beba água antes, durante e
+								depois do treino</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- End of class="panel-body"> -->
+	</div>
+	<!-- End of class="panel panel-default" -->
+	</form:form>
+	</div>
+<!-- fim da apresentação da ficha importada do ficha -->
 
 
 <c:import url="../footer.jsp" />

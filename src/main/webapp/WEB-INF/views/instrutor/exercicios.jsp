@@ -31,6 +31,10 @@
 		<form:form id="contact"
 			action="${s:mvcUrl('IC#detalhesFicha').arg(0 , ficha.fichaId).build()}"
 			method="POST">
+			
+			
+			
+			
 			<div class="panel panel-default">
 				<!-- Default panel contents -->
 				<div class="panel-heading">
@@ -62,7 +66,7 @@
 								<strong>Duração do treino</strong>: ${ficha.tempoDisponivel}
 							</p>
 							<p>
-								<strong>Divisão de treino</strong>: ${ficha.serie.ordinal()}
+								<strong>Divisão de treino</strong>: ${ficha.serie}
 							</p>
 						</div>
 

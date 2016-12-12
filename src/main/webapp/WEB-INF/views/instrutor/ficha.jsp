@@ -64,7 +64,7 @@
 								<strong>Duração do treino</strong>: ${ficha.tempoDisponivel}
 							</p>
 							<p>
-								<strong>Divisão de treino</strong>: ${ficha.serie.ordinal()}
+								<strong>Divisão de treino</strong>: ${ficha.serie}
 							</p>
 						</div>
 
@@ -89,16 +89,18 @@
 									<strong>TREINO A</strong>
 								</caption>
 								<tr>
-									<th class="text-center">Nº</th>
+									
 									<th class="text-center">Exercício</th>
 									<th class="text-center">Aparelho</th>
+									<th class="text-center">Nº</th>
 								</tr>
 								<c:forEach items="${ficha.exercicios}" var="exercicio">
 									<c:if test="${exercicio.seriePertencente == 'A'}">
 										<tr>
-											<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
+											
 											<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
 											<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>
+											<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
 										</tr>
 									</c:if>
 								</c:forEach>
@@ -116,16 +118,18 @@
 									<strong>TREINO B</strong>
 								</caption>
 								<tr>
-									<th class="text-center">Nº</th>
+									
 									<th class="text-center">Exercício</th>
 									<th class="text-center">Aparelho</th>
+									<th class="text-center">Nº</th>
 								</tr>
 								<c:forEach items="${ficha.exercicios}" var="exercicio">
 									<c:if test="${exercicio.seriePertencente == 'B'}">
 										<tr>
-											<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
+											
 											<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
 											<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>
+											<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
 										</tr>
 									</c:if>
 								</c:forEach>
@@ -141,16 +145,18 @@
 								<strong>TREINO C</strong>
 							</caption>
 							<tr>
-								<th class="text-center">Nº</th>
+								
 								<th class="text-center">Exercício</th>
 								<th class="text-center">Aparelho</th>
+								<th class="text-center">Nº</th>
 							</tr>
 							<c:forEach items="${ficha.exercicios}" var="exercicio">
 								<c:if test="${exercicio.seriePertencente == 'C'}">
 									<tr>
-										<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
+										
 										<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
 										<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>
+										<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
 									</tr>
 								</c:if>
 							</c:forEach>
@@ -166,16 +172,18 @@
 								<strong>TREINO D</strong>
 							</caption>
 							<tr>
-								<th class="text-center">Nº</th>
+								
 								<th class="text-center">Exercício</th>
 								<th class="text-center">Aparelho</th>
+								<th class="text-center">Nº</th>
 							</tr>
 							<c:forEach items="${ficha.exercicios}" var="exercicio">
 								<c:if test="${exercicio.seriePertencente == 'D'}">
 									<tr>
-										<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
+										
 										<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
 										<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>
+										<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
 									</tr>
 								</c:if>
 							</c:forEach>
@@ -192,16 +200,18 @@
 								<strong>TREINO E</strong>
 							</caption>
 							<tr>
-								<th class="text-center">Nº</th>
+								
 								<th class="text-center">Exercício</th>
 								<th class="text-center">Aparelho</th>
+								<th class="text-center">Nº</th>
 							</tr>
 							<c:forEach items="${ficha.exercicios}" var="exercicio">
 								<c:if test="${exercicio.seriePertencente == 'E'}">
 									<tr>
-										<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
+										
 										<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
 										<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>
+										<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
 									</tr>
 								</c:if>
 							</c:forEach>

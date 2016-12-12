@@ -163,7 +163,7 @@ public class InstrutorController {
 		ficha.setInstrutor(instrutor);
 
 		fichaTreinoDAO.cadastrarFicha(ficha);
-		ModelAndView mv = new ModelAndView("redirect:instrutor/exercicios");
+		ModelAndView mv = new ModelAndView("instrutor/exercicios");
 
 		System.out.println(ficha);
 
@@ -220,6 +220,7 @@ public class InstrutorController {
 		ficha.add(exercicio);
 		fichatreinoExercicioAparelhoDao.cadastrarExercicio(exercicio);
 		fichaTreinoDAO.atualizarFicha(ficha);
+		ficha = fichaTreinoDAO.buscaFicha(fichaId);
 		ArrayList<Exercicio_Aparelho> exercicios = exercicio_aparelhoDao.recuperarExerciciosDoBanco();
 		ArrayList<FichatreinoExercicioAparelho> fichaexercicios = fichatreinoExercicioAparelhoDao
 				.recuperarFichatreinoExercicioAparelhoDoBanco();

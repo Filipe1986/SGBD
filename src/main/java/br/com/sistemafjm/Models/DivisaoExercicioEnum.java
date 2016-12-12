@@ -1,5 +1,5 @@
 package br.com.sistemafjm.Models;
 
-public enum PertenceSerieEnum {
+public enum DivisaoExercicioEnum {
     A, B, C, D, E;
 }

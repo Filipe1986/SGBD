@@ -14,7 +14,7 @@ import br.com.sistemafjm.Daos.AparelhoDAO;
 import br.com.sistemafjm.Daos.ExercicioAparelhoDAO;
 import br.com.sistemafjm.Daos.ExercicioDAO;
 import br.com.sistemafjm.Daos.FichaTreinoDAO;
-import br.com.sistemafjm.Daos.FichatreinoExercicioAparelhoDao;
+/*import br.com.sistemafjm.Daos.FichatreinoExercicioAparelhoDao;*/
 import br.com.sistemafjm.Daos.InstrutorDAO;
 import br.com.sistemafjm.Daos.MedidasCorporaisDAO;
 import br.com.sistemafjm.Daos.UsuarioDAO;
@@ -22,12 +22,12 @@ import br.com.sistemafjm.Models.Aparelho;
 import br.com.sistemafjm.Models.Exercicio;
 import br.com.sistemafjm.Models.Exercicio_Aparelho;
 import br.com.sistemafjm.Models.FichaTreino;
-import br.com.sistemafjm.Models.FichatreinoExercicioAparelho;
+/*import br.com.sistemafjm.Models.FichatreinoExercicioAparelho;*/
 import br.com.sistemafjm.Models.InstrutorModelo;
 import br.com.sistemafjm.Models.MedidasCorporais;
 import br.com.sistemafjm.Models.ObjetivoEnum;
-import br.com.sistemafjm.Models.PertenceSerieEnum;
-import br.com.sistemafjm.Models.SerieEnum;
+import br.com.sistemafjm.Models.DivisaoExercicioEnum;
+import br.com.sistemafjm.Models.DivisaoTreinoEnum;
 import br.com.sistemafjm.Models.SexoEnum;
 import br.com.sistemafjm.Models.StatusEnum;
 import br.com.sistemafjm.Models.UsuarioModelo;
@@ -57,9 +57,10 @@ public class InstrutorController {
 	@Autowired
 	private ExercicioAparelhoDAO exercicio_aparelhoDao;
 
-	@Autowired
-	private FichatreinoExercicioAparelhoDao fichatreinoExercicioAparelhoDao;
-
+	/*
+	 * @Autowired private FichatreinoExercicioAparelhoDao
+	 * fichatreinoExercicioAparelhoDao;
+	 */
 	/**
 	 * Entra na página do formulário para adicionar/cadastrar um instrutor
 	 *
@@ -167,17 +168,29 @@ public class InstrutorController {
 
 		System.out.println(ficha);
 
-		PertenceSerieEnum[] values = PertenceSerieEnum.values();
-		PertenceSerieEnum[] valores = new PertenceSerieEnum[ficha.getSerie().getNumero()];
+		DivisaoExercicioEnum[] values = DivisaoExercicioEnum.values();
+		DivisaoExercicioEnum[] valores = new DivisaoExercicioEnum[ficha.getSerie().getNumero()];
 		for (int i = 0; i < valores.length; i++) {
 			valores[i] = values[i];
 		}
 
-		ArrayList<Exercicio_Aparelho> exercicios = exercicio_aparelhoDao.recuperarExerciciosDoBanco();
+		ArrayList<Exercicio> exercicios = exercicioDAO.recuperarExerciciosDoBanco();
+		ArrayList<Aparelho> aparelhos = aparelhoDAO.recuperarAparelhosDoBanco();
+
+		mv.addObject("aparelhos", aparelhos);
+		mv.addObject("exercicios", exercicios);
+
+		ArrayList<Exercicio_Aparelho> exerciciosAparelho = exercicio_aparelhoDao.recuperarExerciciosDoBanco();
 		Exercicio_Aparelho exercicio_Aparelho = new Exercicio_Aparelho();
+		/*
+		 * FichatreinoExercicioAparelho fichaExercicio = new
+		 * FichatreinoExercicioAparelho();
+		 */
+
+		/* mv.addObject("fichaExercicio", fichaExercicio); */
 
 		mv.addObject("seriesPertencentes", valores);
-		mv.addObject("exercicios", exercicios);
+		mv.addObject("exerciciosAparelhos", exerciciosAparelho);
 		mv.addObject("exercicio_Aparelho", exercicio_Aparelho);
 		mv.addObject("usuario", usuario);
 		mv.addObject("ficha", ficha);
@@ -199,7 +212,7 @@ public class InstrutorController {
 
 		ModelAndView mv = new ModelAndView("instrutor/cadastroTreino");
 
-		mv.addObject("series", SerieEnum.values());
+		mv.addObject("series", DivisaoTreinoEnum.values());
 		mv.addObject("objetivos", ObjetivoEnum.values());
 		UsuarioModelo usuario = usuarioDAO.buscaUsuario(Id);
 		ficha.setUsuario(usuario);
@@ -213,30 +226,43 @@ public class InstrutorController {
 
 	@RequestMapping("/usuario-{Id}/novaFicha/exercicios/adicionando")
 	public ModelAndView adicionarExercicioFicha(@PathVariable("Id") Integer id, Integer fichaId,
-			FichatreinoExercicioAparelho exercicio) {
+			Exercicio_Aparelho exercicio_Aparelho) {
+
+		System.out.println("\n exercicio aparelho id - " + exercicio_Aparelho);
 
 		FichaTreino ficha = fichaTreinoDAO.buscaFicha(fichaId);
-		exercicio.setFicha(ficha);
-		ficha.add(exercicio);
-		fichatreinoExercicioAparelhoDao.cadastrarExercicio(exercicio);
 		fichaTreinoDAO.atualizarFicha(ficha);
-		ficha = fichaTreinoDAO.buscaFicha(fichaId);
-		ArrayList<Exercicio_Aparelho> exercicios = exercicio_aparelhoDao.recuperarExerciciosDoBanco();
-		ArrayList<FichatreinoExercicioAparelho> fichaexercicios = fichatreinoExercicioAparelhoDao
-				.recuperarFichatreinoExercicioAparelhoDoBanco();
+		exercicio_Aparelho.setFicha(ficha);
+
+		exercicio_aparelhoDao.cadastrarExercicio(exercicio_Aparelho);
 
 		ModelAndView mv = new ModelAndView("instrutor/exercicios");
 
-		PertenceSerieEnum[] values = PertenceSerieEnum.values();
-		PertenceSerieEnum[] valores = new PertenceSerieEnum[ficha.getSerie().getNumero()];
+		DivisaoExercicioEnum[] values = DivisaoExercicioEnum.values();
+		DivisaoExercicioEnum[] valores = new DivisaoExercicioEnum[ficha.getSerie().getNumero()];
 		for (int i = 0; i < valores.length; i++) {
 			valores[i] = values[i];
 		}
+		/*
+		 * FichatreinoExercicioAparelho fichaExercicio = new
+		 * FichatreinoExercicioAparelho(); /* mv.addObject("fichaExercicio",
+		 * fichaExercicio);
+		 */
+		ArrayList<Exercicio> exercicios = exercicioDAO.recuperarExerciciosDoBanco();
+		ArrayList<Aparelho> aparelhos = aparelhoDAO.recuperarAparelhosDoBanco();
+
+		mv.addObject("aparelhos", aparelhos);
+		mv.addObject("exercicios", exercicios);
+
+		ArrayList<Exercicio_Aparelho> exerciciosAparelho = exercicio_aparelhoDao.recuperarExerciciosDoBanco();
+
+		mv.addObject("exerciciosAparelhos", exerciciosAparelho);
+		mv.addObject("exercicio_Aparelho", exercicio_Aparelho);
 
 		mv.addObject("seriesPertencentes", valores);
-		mv.addObject("exercicios", exercicios);
-		mv.addObject("fichaexercicios", fichaexercicios);
+		/* mv.addObject("fichaexercicios", fichaexercicios); */
 		mv.addObject("ficha", ficha);
+
 		return mv;
 	}
 
@@ -261,7 +287,9 @@ public class InstrutorController {
 	@RequestMapping(value = "/listaExercicios", method = RequestMethod.GET)
 	public ModelAndView listaExercicios() {
 		ModelAndView mv = new ModelAndView("instrutor/listaExercicios");
-		ArrayList<Exercicio_Aparelho> exercicios = exercicio_aparelhoDao.recuperarExerciciosDoBanco();
+
+		ArrayList<Exercicio> exercicios = exercicioDAO.recuperarExerciciosDoBanco();
+
 		mv.addObject("exercicios", exercicios);
 		return mv;
 	}
@@ -326,6 +354,7 @@ public class InstrutorController {
 	 * Adiciona novo exercício no banco
 	 *
 	 * @param exercicio
+	 * 
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/cadastrandoExercicioAparelho", method = RequestMethod.POST)

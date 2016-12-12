@@ -15,35 +15,36 @@ import lombok.Data;
 @Data
 public class MedidasCorporais implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer fichaId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer fichaId;
 
-    @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
-    private UsuarioModelo usuario;
+	@ManyToOne
+	@JoinColumn(name = "id", nullable = false)
+	private UsuarioModelo usuario;
 
-    private String dataMedicao;
+	private String dataMedicao;
 
-    private double altura;
-    private double peso;
-    private double IMC;
+	private double altura;
+	private double peso;
+	private double IMC;
 
-    private double cintura;
-    private double torax;
-    private double quadril;
+	private double cintura;
+	private double torax;
+	private double quadril;
 
-    private double anteBracoEsquerdo;
-    private double anteBracoDireito;
-    private double bracoEsquerdo;
-    private double bracoDireito;
+	private double anteBracoEsquerdo;
+	private double anteBracoDireito;
 
-    private double coxaEsquerda;
-    private double coxaDireita;
+	private double bracoEsquerdo;
+	private double bracoDireito;
 
-    private double panturilhaEsquerda;
-    private double panturilhaDireita;
+	private double coxaEsquerda;
+	private double coxaDireita;
+
+	private double panturilhaEsquerda;
+	private double panturilhaDireita;
 
 }

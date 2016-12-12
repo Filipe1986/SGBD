@@ -118,6 +118,7 @@
 								<c:forEach items="${ficha.exercicios}" var="exercicio">
 									<c:if test="${exercicio.seriePertencente == 'C'}">
 										<tr>
+										${exercicio.exercicio_Aparelho.aparelho}
 											<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
 											<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
 											<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>

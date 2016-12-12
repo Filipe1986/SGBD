@@ -21,8 +21,8 @@
                     <li class="active"><a href="<c:url value='/'/>">Início</a></li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Listas <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<c:url value='/instrutor/listaUsuarios '/>">Lista de Usuários</a></li>
-                            <li><a href="<c:url value='/instrutor/listaInstrutor '/>">Lista de Instrutores</a></li>
+                            <li><a href="<c:url value='/instrutor/listaUsuarios'/>">Lista de Usuários</a></li>
+                            <li><a href="<c:url value='/instrutor/listaInstrutor'/>">Lista de Instrutores</a></li>
                             <li><a href="<c:url value='/instrutor/listaFichas'/>">Lista de Fichas</a></li>
                             <li><a href="<c:url value='/instrutor/listaExercicios'/>">Lista de Exercícios</a></li>
                              <li><a href="<c:url value='/instrutor/listaMedidas'/>">Lista de Medidas</a></li>

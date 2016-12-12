@@ -34,14 +34,14 @@
 						</fieldset>
 					</form:form>
 				</div>
-				
+
 				<div class="col-md-6">
 					<form:form id="contact" action="${s:mvcUrl('IC#cadastrandoExercicio').build()}" method="post">
 						<h3>Cadastro de Exercício</h3>
 						<fieldset>
 							<div class="form-group">
 								<label for="nomeAparelho">Nome</label>
-								<input type="text" class="form-control" name="nomeExercício">
+								<input type="text" class="form-control" name="nomeExercicio">
 								<span class='msg-erro msg-nome'></span>
 							</div>
 						</fieldset>
@@ -56,14 +56,14 @@
 			<div class="row">
 				<div class="col-md-6">
 					<form:form id="contact" action="${s:mvcUrl('IC#cadastrandoExercicioAparelho').build()}" method="post">
-						<h3>Cadastro de Exercício Aparelho</h3>
+<%-- 						<h3>Cadastro de Exercício Aparelho</h3>
 						<fieldset>
 							<div class="form-group">
 								<label for="nomeAparelho">Nome</label>
 								<input type="text" class="form-control" name="nomeExercício">
 								<span class='msg-erro msg-nome'></span>
 							</div>
-						</fieldset>
+						</fieldset> --%>
 						
 						<fieldset>
 							<div>

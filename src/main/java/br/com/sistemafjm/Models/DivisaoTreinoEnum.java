@@ -1,6 +1,6 @@
 package br.com.sistemafjm.Models;
 
-public enum SerieEnum {
+public enum DivisaoTreinoEnum {
 
     A, AB, ABC, ABCD, ABCDE;
 

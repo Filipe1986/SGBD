@@ -38,8 +38,8 @@
 
                 <fieldset>
                     <div class="form-group">
-                        <label for="nomeAparelho">Nome</label> <input type="text"
-                                                                      class="form-control" name="nomeAparelho"
+                        <label for="nomeAparelho">Nome</label> 
+                        <input type="text"class="form-control" name="nomeAparelho"
                                                                       placeholder="Infome o Nome do aparelho"> <span
                                                                       class='msg-erro msg-nome'></span>
                     </div>

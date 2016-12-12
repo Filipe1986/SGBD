@@ -25,7 +25,7 @@ public class UsuarioModelo {
 
     // Retirar
     @Enumerated(EnumType.STRING)
-    private SerieEnum series;
+    private DivisaoTreinoEnum series;
 
     /* Retirar */
     private String dataNascimento;

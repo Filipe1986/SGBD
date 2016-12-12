@@ -29,22 +29,48 @@
             <table class="table table-bordered table-striped table-hover ">
                 <thead>
                     <tr>
+                    	<th>Nº</th>
                         <th>Nome Exercício</th>
-                        <th>Nome Aparelho</th>
+
                     </tr>
                 </thead>
 
                 <c:forEach items="${exercicios}" var="exercicio">
                     <tbody>
                         <tr>
-                            <td>${exercicio.exercicio.nomeExercicio}</td>
-                            <td>${exercicio.aparelho.nomeAparelho}</td>
+                        	<td></td>
+                            <td>${exercicionomeExercicio}</td>
                         </tr>
                     </c:forEach>
             </table>
 
         </div>
+        
+<%--                 <div class="container">
 
+            <h1>Lista de Exercicios</h1>
+
+            <table class="table table-bordered table-striped table-hover ">
+                <thead>
+                    <tr>
+                    	<th>Nº</th>
+                        <th>Nome Exercício</th>
+                        <th>Nome Aparelho</th>
+                    </tr>
+                </thead>
+
+                <c:forEach items="${fichatreinoExercicioAparelhos}" var="fea">
+                    <tbody>
+                        <tr>
+                        	<td>fea.fichaExercicioId</td>
+                            <td>${fea.ficha}</td>
+                            <td>${fea}</td>
+                        </tr>
+                    </c:forEach>
+            </table>
+
+        </div>
+ --%>
         <c:import url="../footer.jsp" />
 
         <!-- JavaScript -->

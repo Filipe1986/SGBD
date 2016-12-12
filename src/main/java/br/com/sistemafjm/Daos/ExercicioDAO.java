@@ -14,18 +14,18 @@ import br.com.sistemafjm.Models.Exercicio;
 @Transactional
 public class ExercicioDAO {
 
-    @PersistenceContext // Injeção de do objeto
-    private EntityManager manager;
+	@PersistenceContext
+	private EntityManager manager;
 
-    public void cadastrarExercicio(Exercicio exercicio) {
-        manager.persist(exercicio);
+	public void cadastrarExercicio(Exercicio exercicio) {
+		manager.persist(exercicio);
 
-    }
+	}
 
-    /**
-     * @return List<Exercicio>
-     */
-    public ArrayList<Exercicio> recuperarExerciciosDoBanco() {
-        return (ArrayList<Exercicio>) manager.createQuery("select u from Exercicio u", Exercicio.class).getResultList();
-    }
+	/**
+	 * @return List<Exercicio>
+	 */
+	public ArrayList<Exercicio> recuperarExerciciosDoBanco() {
+		return (ArrayList<Exercicio>) manager.createQuery("select u from Exercicio u", Exercicio.class).getResultList();
+	}
 }

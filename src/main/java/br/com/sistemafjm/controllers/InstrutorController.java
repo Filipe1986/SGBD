@@ -19,6 +19,8 @@ import br.com.sistemafjm.Daos.InstrutorDAO;
 import br.com.sistemafjm.Daos.MedidasCorporaisDAO;
 import br.com.sistemafjm.Daos.UsuarioDAO;
 import br.com.sistemafjm.Models.Aparelho;
+import br.com.sistemafjm.Models.DivisaoExercicioEnum;
+import br.com.sistemafjm.Models.DivisaoTreinoEnum;
 import br.com.sistemafjm.Models.Exercicio;
 import br.com.sistemafjm.Models.Exercicio_Aparelho;
 import br.com.sistemafjm.Models.FichaTreino;
@@ -26,8 +28,6 @@ import br.com.sistemafjm.Models.FichaTreino;
 import br.com.sistemafjm.Models.InstrutorModelo;
 import br.com.sistemafjm.Models.MedidasCorporais;
 import br.com.sistemafjm.Models.ObjetivoEnum;
-import br.com.sistemafjm.Models.DivisaoExercicioEnum;
-import br.com.sistemafjm.Models.DivisaoTreinoEnum;
 import br.com.sistemafjm.Models.SexoEnum;
 import br.com.sistemafjm.Models.StatusEnum;
 import br.com.sistemafjm.Models.UsuarioModelo;
@@ -181,7 +181,16 @@ public class InstrutorController {
 		mv.addObject("exercicios", exercicios);
 
 		ArrayList<Exercicio_Aparelho> exerciciosAparelho = exercicio_aparelhoDao.recuperarExerciciosDoBanco();
+
 		Exercicio_Aparelho exercicio_Aparelho = new Exercicio_Aparelho();
+
+		/*
+		 * Exercicio_AparelhoPk exercicio_AparelhoPk = new
+		 * Exercicio_AparelhoPk();
+		 * 
+		 * exercicio_Aparelho.setExercicioAparelhoPk(exercicio_AparelhoPk);
+		 * exercicio_AparelhoPk.setExercicio(new Exercicio());
+		 */
 		/*
 		 * FichatreinoExercicioAparelho fichaExercicio = new
 		 * FichatreinoExercicioAparelho();
@@ -191,7 +200,7 @@ public class InstrutorController {
 
 		mv.addObject("seriesPertencentes", valores);
 		mv.addObject("exerciciosAparelhos", exerciciosAparelho);
-		mv.addObject("exercicio_Aparelho", exercicio_Aparelho);
+		mv.addObject("exercicioAparelho", exercicio_Aparelho);
 		mv.addObject("usuario", usuario);
 		mv.addObject("ficha", ficha);
 		return mv;
@@ -224,15 +233,16 @@ public class InstrutorController {
 		return mv;
 	}
 
-	@RequestMapping("/usuario-{Id}/novaFicha/exercicios/adicionando")
+	@RequestMapping(value = "/usuario-{Id}/novaFicha/exercicios/adicionando", method = RequestMethod.POST)
 	public ModelAndView adicionarExercicioFicha(@PathVariable("Id") Integer id, Integer fichaId,
 			Exercicio_Aparelho exercicio_Aparelho) {
 
 		System.out.println("\n exercicio aparelho id - " + exercicio_Aparelho);
 
 		FichaTreino ficha = fichaTreinoDAO.buscaFicha(fichaId);
+		ficha.getExerciciosAparelhos().add(exercicio_Aparelho);
+
 		fichaTreinoDAO.atualizarFicha(ficha);
-		exercicio_Aparelho.setFicha(ficha);
 
 		exercicio_aparelhoDao.cadastrarExercicio(exercicio_Aparelho);
 
@@ -250,12 +260,20 @@ public class InstrutorController {
 		 */
 		ArrayList<Exercicio> exercicios = exercicioDAO.recuperarExerciciosDoBanco();
 		ArrayList<Aparelho> aparelhos = aparelhoDAO.recuperarAparelhosDoBanco();
+		Exercicio_Aparelho exercicioAparelho = new Exercicio_Aparelho();
+
+		/*
+		 * Exercicio_AparelhoPk aparelhoPK = new Exercicio_AparelhoPk();
+		 * 
+		 * exercicioAparelho.setExercicioAparelhoPk(aparelhoPK);
+		 */
 
 		mv.addObject("aparelhos", aparelhos);
 		mv.addObject("exercicios", exercicios);
 
 		ArrayList<Exercicio_Aparelho> exerciciosAparelho = exercicio_aparelhoDao.recuperarExerciciosDoBanco();
 
+		mv.addObject("exercicioAparelho", exercicioAparelho);
 		mv.addObject("exerciciosAparelhos", exerciciosAparelho);
 		mv.addObject("exercicio_Aparelho", exercicio_Aparelho);
 

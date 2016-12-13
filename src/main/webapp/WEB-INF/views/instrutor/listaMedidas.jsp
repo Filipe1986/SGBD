@@ -36,9 +36,9 @@
 			<c:forEach items="${medidas}" var="medida">
 				<tbody>
 					<tr>
-						<td>${medida.fichaId}</td>
+						<td>${medida.medidaId}</td>
 												<td><a
-							href="${s:mvcUrl('IC#removeMedida').arg(0 , medida.fichaId).build()}"
+							href="${s:mvcUrl('IC#removeMedida').arg(0 , medida.medidaId).build()}"
 							style="display: block">
 
 								X

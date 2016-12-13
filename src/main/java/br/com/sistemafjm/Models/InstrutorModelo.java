@@ -17,35 +17,36 @@ import lombok.Data;
 @Data
 public class InstrutorModelo {
 
-    @Id
+	@Id
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String nome;
-    private String email;
-    private String cpf;
-    private String dataNascimento;
-    private String celular;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String nome;
+	private String email;
+	private String cpf;
+	private String dataNascimento;
+	private String celular;
 
-    @Enumerated(EnumType.STRING)
-    private StatusEnum status;
-    @Enumerated(EnumType.STRING)
-    private SexoEnum sexo;
+	@Enumerated(EnumType.STRING)
+	private StatusEnum status;
+	@Enumerated(EnumType.STRING)
+	private SexoEnum sexo;
 
-    private String senha;
-    private String formacao;
-    private String especializacao;
-    private String horario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "instrutor")
-    private List<FichaTreino> fichas;
+	private String senha;
+	private String formacao;
+	private String especializacao;
+	private String horario;
 
-    public InstrutorModelo() {
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "instrutor")
+	private List<FichaTreino> fichas;
 
-    @Override
-    public String toString() {
-        return "Instrutor [ Nome " + nome + " E-mail " + email + "dataNascimento " + dataNascimento + " cpf " + cpf
-                + " celular " + celular + " StatusEnum " + status + " sexo " + sexo + " senha" + senha + "]";
-    }
+	public InstrutorModelo() {
+	}
+
+	@Override
+	public String toString() {
+		return "Instrutor [ Nome " + nome + " E-mail " + email + "dataNascimento " + dataNascimento + " cpf " + cpf
+				+ " celular " + celular + " StatusEnum " + status + " sexo " + sexo + " senha" + senha + "]";
+	}
 
 }

@@ -3,7 +3,6 @@ package br.com.sistemafjm.Models;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -45,7 +44,7 @@ public class FichaTreino implements Serializable {
 	private String frequenciaSemanal;
 	private String tempoDisponivel;
 
-	@OneToMany(mappedBy = "ExercicioAparelhoId", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "ficha", fetch = FetchType.EAGER)
 	private List<Exercicio_Aparelho> exerciciosAparelhos;
 
 }

@@ -16,41 +16,36 @@ import lombok.Data;
 @Data
 public class UsuarioModelo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String nome;
-    private String email;
-    private String cpf;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String nome;
+	private String email;
+	private String cpf;
 
-    // Retirar
-    @Enumerated(EnumType.STRING)
-    private DivisaoTreinoEnum series;
+	private String dataNascimento;
+	private String celular;
+	@Enumerated(EnumType.STRING)
+	private StatusEnum status;
+	@Enumerated(EnumType.STRING)
+	private SexoEnum sexo;
+	private String senha;
 
-    /* Retirar */
-    private String dataNascimento;
-    private String celular;
-    @Enumerated(EnumType.STRING)
-    private StatusEnum status;
-    @Enumerated(EnumType.STRING)
-    private SexoEnum sexo;
-    private String senha;
+	@OneToMany(mappedBy = "usuario")
+	private List<FichaTreino> fichas;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<FichaTreino> fichas;
+	@OneToMany(mappedBy = "usuario")
+	private List<MedidasCorporais> medidas;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<MedidasCorporais> medidas;
+	public UsuarioModelo() {
 
-    public UsuarioModelo() {
+	}
 
-    }
-
-    @Override
-    public String toString() {
-        return "\nUsuario [ Id " + id + " Nome " + nome + " E-mail " + email + " dataDeNascimento \n" + dataNascimento
-                + " cpf " + cpf + " celular " + celular + " StatusEnum " + status + " sexo " + sexo + " senha" + senha
-                + "]\n";
-    }
+	@Override
+	public String toString() {
+		return "\nUsuario [ Id " + id + " Nome " + nome + " E-mail " + email + " dataDeNascimento \n" + dataNascimento
+				+ " cpf " + cpf + " celular " + celular + " StatusEnum " + status + " sexo " + sexo + " senha" + senha
+				+ "]\n";
+	}
 
 }

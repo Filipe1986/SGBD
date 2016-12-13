@@ -53,17 +53,17 @@
 				
 			</div>
 			
-			<div class="row">
+<%-- 			<div class="row">
 				<div class="col-md-6">
 					<form:form id="contact" action="${s:mvcUrl('IC#cadastrandoExercicioAparelho').build()}" method="post">
-<%-- 						<h3>Cadastro de Exercício Aparelho</h3>
+						<h3>Cadastro de Exercício Aparelho</h3>
 						<fieldset>
 							<div class="form-group">
 								<label for="nomeAparelho">Nome</label>
 								<input type="text" class="form-control" name="nomeExercício">
 								<span class='msg-erro msg-nome'></span>
 							</div>
-						</fieldset> --%>
+						</fieldset>
 						
 						<fieldset>
 							<div>
@@ -93,7 +93,7 @@
 					</form:form>
 				</div>
 			</div>
-			
+			 --%>
 		</div><!-- End of class="container" -->
 		
         <c:import url="../footer.jsp" />

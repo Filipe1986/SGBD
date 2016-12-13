@@ -44,14 +44,6 @@
 
             <fieldset>
                 <div class="form-group">
-                    <label for="telefone">Telefone</label>
-                    <input type="tel" class="form-control" maxlength="12" name="telefone">
-                    <span class='msg-erro msg-telefone'></span>
-                </div>
-            </fieldset>
-
-            <fieldset>
-                <div class="form-group">
                     <label>Celular</label>
                     <input type="tel" class="form-control" maxlength="12" name="celular">
                     <span class='msg-erro msg-telefone'></span>

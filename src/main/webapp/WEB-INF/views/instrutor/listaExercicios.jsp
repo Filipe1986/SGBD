@@ -38,8 +38,8 @@
                 <c:forEach items="${exercicios}" var="exercicio">
                     <tbody>
                         <tr>
-                        	<td></td>
-                            <td>${exercicionomeExercicio}</td>
+                        	<td>${exercicio.exercicioId}</td>
+                            <td>${exercicio.nomeExercicio}</td>
                         </tr>
                     </c:forEach>
             </table>

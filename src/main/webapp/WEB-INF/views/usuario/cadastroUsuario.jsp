@@ -24,7 +24,7 @@
             <div class="row-fluid">
                 <div class="col-md-7"></div>
                 <div class="col-md-5">
-                    <form:form id="contact" action="${s:mvcUrl('UC#cadastrandoUsuario').build()}"  method="POST" enctype="multipart/form-data">
+                    <form:form id="contact" action="${s:mvcUrl('UC#cadastrandoUsuario').build()}"  method="POST">
 
                         <!-- 
                         <label>Foto</label>
@@ -59,12 +59,6 @@
                         <div class="form-group">
                             <label for="data_nascimento">Data de Nascimento</label>
                             <input type="date" class="form-control" maxlength="10" name="dataNascimento">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="telefone">Telefone</label>
-                            <input type="tel" class="form-control" maxlength="12" name="telefone">
-                            <span class='msg-erro msg-telefone'></span>
                         </div>
 
                         <div class="form-group">

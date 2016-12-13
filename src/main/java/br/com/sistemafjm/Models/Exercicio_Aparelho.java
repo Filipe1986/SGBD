@@ -2,14 +2,13 @@ package br.com.sistemafjm.Models;
 
 import java.io.Serializable;
 
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -21,31 +20,50 @@ public class Exercicio_Aparelho implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer ExercicioAparelhoId;
-
-	@JoinColumn(nullable = false)
-	@OneToOne(fetch = FetchType.EAGER)
-	private Exercicio exercicio;
-
-	@JoinColumn(nullable = false)
-	@OneToOne(fetch = FetchType.EAGER)
-	private Aparelho aparelho;
+	/*
+	 * @Id
+	 * 
+	 * @GeneratedValue(strategy = GenerationType.IDENTITY) private Integer
+	 * exercicioAparelhoId;
+	 */
+	@EmbeddedId
+	private Exercicio_AparelhoPk exercicioAparelhoPk;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private FichaTreino ficha;
 
 	@Enumerated(EnumType.STRING)
-	private DivisaoExercicioEnum seriePertencente;
+	private DivisaoExercicioEnum divisaoExercicio;
 
+	private int serie;
 	private int repeticoes;
 	private double carga;
 
-	/* private int tempoDeDescanso; */
+	@Embeddable
+	@Data
+	public static class Exercicio_AparelhoPk implements Serializable {
 
-	/*
-	 * @Enumerated(EnumType.STRING) private FichaStatusEnum atual;
-	 */
+		private static final long serialVersionUID = 1L;
+
+		@GeneratedValue
+		private Integer exercicioAparelhoId;
+
+		@OneToOne
+		private Exercicio exercicio;
+
+		@OneToOne
+		private Aparelho aparelho;
+
+		@Override
+		public boolean equals(Object obj) {
+			return super.equals(obj);
+		}
+
+		@Override
+		public int hashCode() {
+			return super.hashCode();
+		}
+
+	}
 
 }

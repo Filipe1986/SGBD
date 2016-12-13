@@ -32,6 +32,7 @@
 			
                 <h2>Aluno: ${ficha.usuario.nome}</h2>
 
+
                 Instrutor: 
                 <select name='instrutor.id'>
                     <option value="${selected}" selected>${selected}</option>

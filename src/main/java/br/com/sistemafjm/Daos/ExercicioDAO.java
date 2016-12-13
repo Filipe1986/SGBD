@@ -28,4 +28,12 @@ public class ExercicioDAO {
 	public ArrayList<Exercicio> recuperarExerciciosDoBanco() {
 		return (ArrayList<Exercicio>) manager.createQuery("select u from Exercicio u", Exercicio.class).getResultList();
 	}
+
+	public Exercicio buscaExercicio(Integer exercicioId) {
+
+		return manager
+				.createQuery("select distinct(i) from Exercicio i where i.exercicioId = :exercicioId", Exercicio.class)
+				.setParameter("exercicioId", exercicioId).getSingleResult();
+
+	}
 }

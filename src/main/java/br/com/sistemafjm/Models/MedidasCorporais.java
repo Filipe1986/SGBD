@@ -19,7 +19,7 @@ public class MedidasCorporais implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer fichaId;
+	private Integer medidaId;
 
 	@ManyToOne
 	@JoinColumn(name = "id", nullable = false)

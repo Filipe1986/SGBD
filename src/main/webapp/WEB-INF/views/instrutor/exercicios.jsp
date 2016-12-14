@@ -85,16 +85,7 @@
 								<th class="text-center">Aparelho</th>
 								<th class="text-center">Nº</th>
 							</tr>
-							<%-- 							<c:forEach items="${ficha.exercicios}" var="exercicio">
-									<c:if test="${exercicio.seriePertencente == 'A'}">
-										<tr>
 
-											<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
-											<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>
-											<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
-										</tr>
-									</c:if>
-								</c:forEach> --%>
 						</table>
 
 					</div>
@@ -112,16 +103,7 @@
 									<th class="text-center">Aparelho</th>
 									<th class="text-center">Nº</th>
 								</tr>
-								<%-- 									<c:forEach items="${ficha.exercicios}" var="exercicio">
-										<c:if test="${exercicio.seriePertencente == 'B'}">
-											<tr>
 
-												<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
-												<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>
-												<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
-											</tr>
-										</c:if>
-									</c:forEach> --%>
 							</table>
 						</div>
 					</c:if>
@@ -167,16 +149,7 @@
 							<th class="text-center">Aparelho</th>
 							<th class="text-center">Nº</th>
 						</tr>
-						<%-- 							<c:forEach items="${ficha.exercicios}" var="exercicio">
-								<c:if test="${exercicio.seriePertencente == 'D'}">
-									<tr>
 
-										<td>${exercicio.exercicio_Aparelho.exercicio.nomeExercicio}</td>
-										<td>${exercicio.exercicio_Aparelho.aparelho.nomeAparelho}</td>
-										<td>${exercicio.exercicio_Aparelho.aparelho.aparelhoId}</td>
-									</tr>
-								</c:if> 
-							</c:forEach>--%>
 					</table>
 				</div>
 			</c:if>
@@ -219,24 +192,22 @@
 
 
 		<form:form id="contact"
-			action="${s:mvcUrl('IC#adicionarExercicioFicha').arg(0 , usuario.id).arg(1 , ficha.fichaId).arg(2 , exercicioAparelho).build()}"
+			action="${s:mvcUrl('IC#adicionarExercicioFicha').arg(0 , usuario.id).arg(1 , ficha.fichaId).build()}"
 			method="post">
-
-			<!-- .arg(2 , exercicio.exercicioId) -->
+			
 
 			<!-- AAAAAAAAAAAAAAAAAAAAA -->
 			<h3>Adicionar Exercício</h3>
 			<fieldset>
+			
 				<div>
-				${exercicioAparelho}
-				${exercicioAparelhoPk.exercicio.exercicioId}
-				
 				
 					<select name='exercicio'>
 						<option value="${selected}" selected>${selected}</option>
 						<c:forEach items="${exercicios}" var="exercicio">
-							<option value="${exercicioAparelhoPk.exercicio.exercicioId}">${exercicio.nomeExercicio}</option>
-						<%-- 	${exercicio} --%>
+							<%-- <option value="${pk.exercicio}">${exercicio.nomeExercicio}</option> --%>
+							<option value="${exercicio}">${exercicio.nomeExercicio}</option>
+					
 						</c:forEach>
 					</select><br>
 				</div>
@@ -248,7 +219,7 @@
 					<select name='aparelho.aparelhoId'>
 						<option value="${selected}" selected>${selected}</option>
 						<c:forEach items="${aparelhos}" var="aparelho">
-							<option value="${exercicioAparelho}">${aparelho.nomeAparelho}</option>
+							<option value="${aparelho}">${aparelho.nomeAparelho}</option>
 						</c:forEach>
 					</select><br>
 				</div>
@@ -256,33 +227,6 @@
 
 
 			<!-- AAAAAAAAAAAAAAAAAAAAA -->
-
-
-
-			<%-- 			<fieldset>
-				<div>
-					<label>Exercicio</label> <select name='exercicios'>
-						<option value="${selected}" selected>${selected}</option>
-						<c:forEach items="${exercicios}" var="exercicio">
-							<option value="${exercicio}">${exercicio.nomeExercicio}</option>
-						</c:forEach>
-
-					</select> <br>
-				</div>
-			</fieldset> --%>
-
-			<%-- 			<fieldset>
-				<div>
-					<label>Exercicio Aparelho</label> <select name='exercicio_Aparelhos'>
-						<option value="${selected}" selected>${selected}</option>
-						<c:forEach items="${exercicios}" var="exercicio_Aparelho">
-						
-							<option value="${inteiro}">${exercicio_Aparelho.ExercicioAparelhoId}</option>
-						</c:forEach>
-
-					</select> <br>
-				</div> 
-			</fieldset>--%>
 
 			<fieldset>
 				<div>
@@ -315,8 +259,7 @@
 						type="number" step="1" value="1">
 				</div>
 			</fieldset>
-			<%-- 		 <form:input path="exercicioId" value=""/>  --%>
-			<input name="text" type="hidden" value="${ficha.fichaId}">
+		<%-- 	<input type="hidden" name="pk" value="${pk}" /> --%>
 			<button name="submit" type="submit" id="contact-submit"
 				data-submit="...Sending">Adicionar</button>
 		</form:form>

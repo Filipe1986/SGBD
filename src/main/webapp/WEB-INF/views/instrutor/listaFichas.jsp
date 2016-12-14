@@ -24,7 +24,7 @@
         <c:import url="../head.jsp" />
         <div class="container">
 
-            <h1>Lista de usuarios</h1>
+            <h1>Lista de Fichas</h1>
 
             <table class="table table-bordered table-striped table-hover ">
                 <thead>

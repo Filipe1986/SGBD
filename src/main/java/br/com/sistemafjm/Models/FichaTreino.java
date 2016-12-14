@@ -31,7 +31,7 @@ public class FichaTreino implements Serializable {
 	private InstrutorModelo instrutor;
 
 	@Enumerated(EnumType.STRING)
-	private FichaStatusEnum fichaAtual;
+	private FichaStatusEnum fichaAtual = FichaStatusEnum.Atual;
 
 	@Enumerated(EnumType.STRING)
 	private DivisaoTreinoEnum serie;
